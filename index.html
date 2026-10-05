@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Школа выбрала Teams для дистанта?! · какого фига</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #16191d;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      color: #eef2f6;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .rage-card {
+      max-width: 920px;
+      width: 100%;
+      background: #21262d;
+      border-radius: 2.5rem;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      border: 1px solid #363c44;
+    }
+
+    /* Заголовок с максимальным негодованием */
+    .rage-header {
+      margin-bottom: 2rem;
+      border-bottom: 2px dashed #4a525e;
+      padding-bottom: 1.5rem;
+    }
+
+    .rage-header .top-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.7rem 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .rage-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #f4f7fb;
+      text-shadow: 0 2px 0 #0c0e11;
+    }
+
+    .rage-header h1 .accent-red {
+      background: #d93b3b;
+      color: #fff;
+      font-size: 1.7rem;
+      padding: 0.15rem 0.9rem 0.2rem 0.9rem;
+      border-radius: 60px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 0 #7a1f1f;
+      transform: rotate(-1.5deg);
+      display: inline-block;
+      margin-right: 0.2rem;
+    }
+
+    .rage-header .subhead {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #b9c6d4;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .rage-header .subhead .school {
+      background: #2e3742;
+      padding: 0.15rem 1rem;
+      border-radius: 40px;
+      font-weight: 700;
+      color: #ffcf8a;
+      border: 1px solid #4a5767;
+      white-space: nowrap;
+    }
+
+    .rage-header .big-emoji {
+      font-size: 3.2rem;
+      line-height: 1;
+      filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.5));
+      margin-left: auto;
+    }
+
+    /* Главный блок негодования */
+    .main-whine {
+      background: #2a313b;
+      border-left: 8px solid #d93b3b;
+      border-radius: 1.5rem;
+      padding: 1.9rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 0 #0f1215;
+    }
+
+    .main-whine p {
+      font-size: 1.45rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .main-whine p:last-child {
+      margin-bottom: 0;
+    }
+
+    .main-whine .icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: -0.1rem;
+      filter: drop-shadow(0 2px 1px black);
+    }
+
+    .main-whine strong {
+      color: #ffb347;
+      font-weight: 800;
+      background: #2c2416;
+      padding: 0.05rem 0.5rem;
+      border-radius: 12px;
+    }
+
+    .main-whine .school-highlight {
+      color: #ff8a8a;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-style: wavy;
+      text-decoration-color: #d93b3b;
+      text-underline-offset: 5px;
+    }
+
+    /* Секция с альтернативами — что школа могла бы выбрать */
+    .alternatives {
+      background: #1c222a;
+      border-radius: 2rem;
+      padding: 2rem 2rem 1.8rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #3c4553;
+    }
+
+    .alternatives h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: #d3e0ef;
+    }
+
+    .alternatives h2 .icon-list {
+      font-size: 1.9rem;
+    }
+
+    .alt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .alt-item {
+      background: #2b333f;
+      padding: 1rem 1.3rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 3px 0 #0b0e11;
+      transition: all 0.1s ease;
+      border: 1px solid #46505e;
+    }
+
+    .alt-item:hover {
+      background: #36404e;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 #0b0e11;
+    }
+
+    .alt-item .alt-emoji {
+      font-size: 1.6rem;
+    }
+
+    .alt-item .badge-school {
+      font-size: 0.75rem;
+      background: #3d4a5b;
+      color: #ccdbe9;
+      padding: 0.15rem 0.7rem;
+      border-radius: 30px;
+      margin-left: auto;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      border: 1px solid #5b6a7d;
+      white-space: nowrap;
+    }
+
+    .alt-item.chosen {
+      background: #3a2e2e;
+      border: 2px solid #b33a3a;
+      box-shadow: 0 3px 0 #2b1515;
+    }
+
+    .alt-item.chosen .badge-school {
+      background: #b33a3a;
+      color: white;
+      border-color: #d95e5e;
+    }
+
+    /* Блок про обязательный номер */
+    .phone-shit {
+      background: #2d1f1f;
+      border: 2px solid #b33a3a;
+      border-radius: 2rem;
+      padding: 1.9rem 2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 8px 0 #2b1515;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .phone-shit .lock-icon {
+      font-size: 3.8rem;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 2px black);
+      line-height: 1;
+    }
+
+    .phone-shit .phone-text {
+      flex: 1;
+      font-size: 1.4rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: #ffd9b3;
+      min-width: 200px;
+    }
+
+    .phone-shit .phone-text .highlight {
+      background: #b33a3a;
+      color: white;
+      padding: 0.15rem 0.7rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: inline-block;
+      margin: 0.1rem 0.2rem;
+      white-space: nowrap;
+    }
+
+    .phone-shit .phone-text small {
+      display: block;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #d4a88a;
+      margin-top: 0.6rem;
+      font-style: italic;
+      border-left: 3px solid #b33a3a;
+      padding-left: 0.8rem;
+    }
+
+    /* Кнопка возмущения */
+    .action-rage {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0 1rem 0;
+    }
+
+    .btn-rage {
+      background: #d93b3b;
+      border: none;
+      border-radius: 60px;
+      padding: 1rem 2.8rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 0 #701c1c;
+      transition: all 0.07s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+      border: 1px solid #ff7b7b;
+      transform: translateY(0);
+    }
+
+    .btn-rage:active {
+      box-shadow: 0 2px 0 #701c1c;
+      transform: translateY(6px);
+      background: #c02f2f;
+    }
+
+    .btn-rage:hover {
+      background: #e64949;
+    }
+
+    /* Счётчик возмущений */
+    .counter-badge {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #a8b7c9;
+      margin-top: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      border-top: 1px solid #303841;
+      padding-top: 1.3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .counter-badge .fire {
+      font-size: 1.5rem;
+    }
+
+    .counter-badge .petition {
+      background: #2e3a48;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      color: #b8cbdf;
+      border: 1px solid #4a5a6e;
+    }
+
+    /* Подвал */
+    .footer-note {
+      margin-top: 1.8rem;
+      font-size: 0.95rem;
+      text-align: center;
+      color: #6f7b8a;
+      border-top: 1px solid #2d353f;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-note .school-shame {
+      color: #b97777;
+      font-weight: 500;
+    }
+
+    /* Адаптив */
+    @media (max-width: 650px) {
+      .rage-card {
+        padding: 1.8rem 1.5rem;
+      }
+      .rage-header h1 {
+        font-size: 1.9rem;
+      }
+      .rage-header h1 .accent-red {
+        font-size: 1.2rem;
+      }
+      .rage-header .subhead {
+        font-size: 1.1rem;
+      }
+      .main-whine p {
+        font-size: 1.2rem;
+      }
+      .alt-item {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+      .btn-rage {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.6rem;
+      }
+      .phone-shit {
+        padding: 1.3rem 1.3rem;
+      }
+      .phone-shit .phone-text {
+        font-size: 1.1rem;
+      }
+      .phone-shit .lock-icon {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .rage-header h1 {
+        font-size: 1.5rem;
+      }
+      .rage-header h1 .accent-red {
+        font-size: 1rem;
+        padding: 0.1rem 0.5rem;
+      }
+      .main-whine p {
+        font-size: 1rem;
+      }
+      .alt-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="rage-card">
+    <!-- Заголовок -->
+    <div class="rage-header">
+      <div class="top-line">
+        <h1>
+          <span class="accent-red">ШКОЛА ВЫБРАЛА</span>
+        </h1>
+        <span class="big-emoji">🤦‍♂️</span>
+      </div>
+      <div class="subhead">
+        <span>и решила, что мы все будем сидеть в</span>
+        <span class="school">MICROSOFT TEAMS</span>
+        <span style="font-size: 1.8rem;">💀</span>
+      </div>
+    </div>
+
+    <!-- Главная претензия -->
+    <div class="main-whine">
+      <p>
+        <span class="icon">🤷</span>
+        То есть <strong>из всего интернета</strong> школа выбрала именно Teams?
+      </p>
+      <p>
+        <span class="icon">😤</span>
+        Есть же <strong>Zoom, Google Meet, Discord, Telegram, Skype (да, даже он)</strong>...
+      </p>
+      <p>
+        <span class="icon">💢</span>
+        Но нет! <span class="school-highlight">Школа решила</span>, что дистант — это обязательно Microsoft Teams.
+      </p>
+      <p>
+        <span class="icon">🗣️</span>
+        И мало того — пока <strong>личный номер телефона не подтвердишь</strong>, даже не зайдёшь!
+      </p>
+    </div>
+
+    <!-- Что школа могла бы выбрать -->
+    <div class="alternatives">
+      <h2>
+        <span class="icon-list">📋</span> Что можно было выбрать для дистанта?
+      </h2>
+      <div class="alt-grid">
+        <div class="alt-item"><span class="alt-emoji">📹</span> Zoom <span class="badge-school">проще</span></div>
+        <div class="alt-item"><span class="alt-emoji">🔵</span> Google Meet <span class="badge-school">бесплатно</span></div>
+        <div class="alt-item"><span class="alt-emoji">🎮</span> Discord <span class="badge-school">всё умеет</span></div>
+        <div class="alt-item"><span class="alt-emoji">📨</span> Telegram <span class="badge-school">у всех есть</span></div>
+        <div class="alt-item"><span class="alt-emoji">🌐</span> Skype <span class="badge-school">старая школа</span></div>
+        <div class="alt-item chosen"><span class="alt-emoji">😵</span> Microsoft Teams <span class="badge-school">выбор школы</span></div>
+      </div>
+      <p style="margin-top: 1.5rem; color: #a3b5c8; font-size: 1.1rem;">
+        Но школа, видимо, подумала: «А давайте возьмём самое сложное, 
+        что требует подтверждения номера и корпоративную регистрацию!»
+      </p>
+    </div>
+
+    <!-- Блок про номер -->
+    <div class="phone-shit">
+      <div class="lock-icon">🔒📱</div>
+      <div class="phone-text">
+        И вот сидишь ты такой, хочешь на урок — а Teams говорит:
+        <span class="highlight">подтверди личный номер!</span>
+        <small>
+          А если у ученика нет личного номера? А если родители против? 
+          А если просто не хочется светить свой номер в образовательной платформе?
+          Школа, вы там вообще думали?
+        </small>
+      </div>
+    </div>
+
+    <!-- Кнопка возмущения -->
+    <div class="action-rage">
+      <button class="btn-rage" id="rageButton">
+        <span>🔥</span> ВОЗМУТИТЬСЯ <span>🔥</span>
+      </button>
+    </div>
+    <div class="counter-badge" id="rageCounter">
+      <span class="fire">⚡</span> нажми, чтобы школа узнала, как мы «любим» Teams
+    </div>
+
+    <!-- Подвал -->
+    <div class="footer-note">
+      <span>* ни один Microsoft Teams не пострадал (к сожалению) </span>
+      <span class="school-shame">личный номер — это личное. даже для школы. точка.</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      let rageCount = 0;
+      const counterElement = document.getElementById('rageCounter');
+      const rageButton = document.getElementById('rageButton');
+
+      try {
+        const saved = localStorage.getItem('teamsRageCountSchool');
+        if (saved !== null && !isNaN(parseInt(saved, 10))) {
+          rageCount = parseInt(saved, 10);
+        }
+      } catch (e) {}
+
+      function updateCounterDisplay() {
+        let message = '';
+        if (rageCount === 0) {
+          message = 'нажми, чтобы школа узнала, как мы «любим» Teams';
+        } else if (rageCount === 1) {
+          message = '1 раз возмутился(ась) из-за Teams';
+        } else if (rageCount < 5) {
+          message = `${rageCount} раза возмутился(ась) из-за Teams`;
+        } else if (rageCount < 15) {
+          message = `${rageCount} раз возмутился(ась) — Teams всё ещё бесит`;
+        } else {
+          message = `🔥 ${rageCount} раз! Школа, вы слышите? 🔥`;
+        }
+        counterElement.innerHTML = `<span class="fire">⚡</span> ${message}`;
+      }
+
+      updateCounterDisplay();
+
+      rageButton.addEventListener('click', function() {
+        rageCount += 1;
+        try {
+          localStorage.setItem('teamsRageCountSchool', rageCount);
+        } catch (e) {}
+
+        updateCounterDisplay();
+
+        // анимация нажатия
+        rageButton.style.transform = 'scale(0.96)';
+        rageButton.style.transition = 'transform 0.08s';
+        setTimeout(() => {
+          rageButton.style.transform = 'scale(1)';
+        }, 100);
+
+        // пульс счётчика
+        counterElement.style.transition = 'color 0.2s';
+        counterElement.style.color = '#ffb86b';
+        setTimeout(() => {
+          counterElement.style.color = '';
+        }, 200);
+      });
+
+      rageButton.title = 'Каждый клик = +1 к всемирному возмущению Teams в школе';
+    })();
+  </script>
+</body>
+</html>
